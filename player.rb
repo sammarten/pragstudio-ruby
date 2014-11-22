@@ -23,7 +23,11 @@ class Player
   def w00t
     @health += 15
     puts "#{@name} got w00ted!"
-  end  
+  end
+  
+  def strong?
+    @health > 100
+  end
 end
 
 # This code will only run if the file being run is player.rb

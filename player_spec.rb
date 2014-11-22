@@ -44,6 +44,27 @@ describe Player do
       expect(@player.health).to eq(100)
     end
   end
+  
+  context "with a health greater than 100" do
+    before do
+      @player = Player.new("larry", 150)
+    end
+    
+    it "is strong" do
+      expect(@player).to be_strong
+    end
+  end
+
+  context "with a health less than or equal to 100" do
+    before do
+      @player = Player.new("larry", 100)
+    end
+    
+    it "is not strong" do
+      expect(@player).to_not be_strong
+    end
+  end
+
 end
 
 # rspec player_spec.rb --color
