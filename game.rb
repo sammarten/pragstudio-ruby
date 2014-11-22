@@ -1,9 +1,10 @@
 require_relative 'player'
 require_relative 'die'
+require_relative 'game_turn'
 
 class Game
-  def initialize(name)
-    @name = name
+  def initialize(title)
+    @title = title
     @players = []
   end
   
@@ -12,16 +13,12 @@ class Game
   end
   
   def play
-    die = Die.new
+    puts "There are #{@players.size} players in #{@title}:"
+    puts @players
+    
     @players.each do |p|
-      case die.roll
-      when 1..2
-        p.blam
-      when 3..4
-        puts "#{p.name} was skipped."
-      else
-        p.w00t
-      end
+      GameTurn.take_turn(p)
+      puts p
     end
   end
 end
