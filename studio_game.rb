@@ -26,28 +26,38 @@ class Player
   end  
 end
 
+class Game
+  def initialize(name)
+    @name = name
+    @players = []
+  end
+  
+  def add_player(player)
+    @players << player
+  end
+  
+  def play
+    puts "There are #{@players.size} players in #{@name}:"
+    puts @players
+  end
+end
+
 player1 = Player.new("moe")
 player2 = Player.new("larry", 60)
 player3 = Player.new("curly", 125)
 
-players = [player1, player2, player3]
-puts "There are #{players.size} players in the game:"
-puts players
+knuckleheads = Game.new("Knuckleheads")
+knuckleheads.add_player(player1)
+knuckleheads.add_player(player2)
+knuckleheads.add_player(player3)
+knuckleheads.play
 
-players.each do |p|
-  puts p.health
-end
+player4 = Player.new("alvin")
+player5 = Player.new("simon", 60)
+player6 = Player.new("theodore", 125)
 
-players.each do |p|
-  p.blam
-  p.w00t
-  p.w00t
-  puts p
-end
-
-player4 = Player.new("shemp", 90)
-players.pop
-players.push(player4)
-players.each do |p|
-  puts p
-end
+chipmunks = Game.new("Chipmunks")
+chipmunks.add_player(player4)
+chipmunks.add_player(player5)
+chipmunks.add_player(player6)
+chipmunks.play
