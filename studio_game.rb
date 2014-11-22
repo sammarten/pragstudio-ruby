@@ -32,9 +32,7 @@ player3 = Player.new("curly", 125)
 
 players = [player1, player2, player3]
 puts "There are #{players.size} players in the game:"
-players.each do |p|
-  puts p
-end
+puts players
 
 players.each do |p|
   puts p.health
