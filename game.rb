@@ -12,14 +12,34 @@ class Game
     @players << player
   end
   
-  def play
-    puts "There are #{@players.size} players in #{@title}:"
+  def play(rounds)
+    puts "\nThere are #{@players.size} players in #{@title}:"
     puts @players
     
-    @players.each do |p|
-      GameTurn.take_turn(p)
-      puts p
+    1.upto(rounds).each do |round|
+      puts "\nRound #{round}:"
+      @players.each do |p|
+        GameTurn.take_turn(p)
+        puts p
+      end
     end
+  end
+  
+  def print_name_and_health(player)
+    puts "#{player.name} (#{player.health})"
+  end
+  
+  def print_stats
+    strong_players, wimpy_players = @players.partition { |p| p.strong? }
+    
+    puts "\n#{@title} Statistics:"
+    puts "\n#{strong_players.count} strong players:"
+    strong_players.each { |p| print_name_and_health(p) }
+    puts "\n#{wimpy_players.count} wimpy players:"
+    wimpy_players.each { |p| print_name_and_health(p) }
+    
+    puts "\n#{@title} High Scores:"
+    @players.sort.each { |p| puts "#{p.name.ljust(20, ".")}#{p.score}" }
   end
 end
 
@@ -32,5 +52,5 @@ if __FILE__ == $0
   knuckleheads.add_player(player1)
   knuckleheads.add_player(player2)
   knuckleheads.add_player(player3)
-  knuckleheads.play
+  knuckleheads.play(4)
 end

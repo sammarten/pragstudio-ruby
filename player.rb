@@ -28,6 +28,10 @@ class Player
   def strong?
     @health > 100
   end
+  
+  def <=>(other_player)
+    other_player.score <=> score
+  end
 end
 
 # This code will only run if the file being run is player.rb
