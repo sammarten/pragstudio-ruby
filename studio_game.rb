@@ -12,14 +12,3 @@ knuckleheads.add_player(player2)
 knuckleheads.add_player(player3)
 knuckleheads.play(3)
 knuckleheads.print_stats
-
-player4 = Player.new("alvin")
-player5 = Player.new("simon", 60)
-player6 = Player.new("theodore", 125)
-
-chipmunks = Game.new("Chipmunks")
-chipmunks.add_player(player4)
-chipmunks.add_player(player5)
-chipmunks.add_player(player6)
-chipmunks.play(2)
-chipmunks.print_stats
