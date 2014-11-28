@@ -2,6 +2,11 @@ class Player
   attr_reader :health
   attr_accessor :name
   
+  def self.from_csv(string)
+    name, health = string.split(',')    
+    Player.new(name, Integer(health))
+  end
+  
   def initialize(name, health=100)
     @name = name.capitalize
     @health = health
